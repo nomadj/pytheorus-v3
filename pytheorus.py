@@ -59,6 +59,7 @@ def display_treble(pitches, filename='my_score', time_sig='4/4', key=0):
         print(f"Error: Could not find {final_png}")
 
 def display_grandstaff(treble_data, bass_data, title="", composer="", time_sig='4/4', key_sig=0):
+    os.system('clear')
     main_score = stream.Score()
     main_score.insert(0, metadata.Metadata())
     main_score.metadata.title = title
@@ -115,3 +116,15 @@ def play_audio(xml_path):
     cmd = f"{musescore_path} {xml_path} -o {wav_output} -T 10 -r 115 >/dev/null 2>&1"
     subprocess.run(cmd, shell=True)
     subprocess.run(f"aplay {wav_output} >/dev/null 2>&1", shell=True)
+
+def quarter_note(pitch):
+    return (pitch, 1)
+
+def half_note(pitch):
+    return (pitch, 2)
+
+def whole_note(pitch):
+    return (pitch, 4)
+
+def eighth_note(pitch):
+    return (pitch, 0.5)
